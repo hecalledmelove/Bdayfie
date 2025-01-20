@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5e0d7; /* crème */
+            color: #800000; /* bordeaux */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            margin: 20px;
+        }
+        .intro-text {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .image-container {
+            display: none;
+            margin-bottom: 30px;
+        }
+        .confetti {
+            display: none;
+            font-size: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #800000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #5c0000;
+        }
+        .download-btn {
+            display: none;
+            margin-top: 20px;
+        }
+        #image {
+            width: 346px; /* Fixed width */
+            height: 500px; /* Fixed height */
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <div id="intro" class="intro-text">
+            <p>My dear babygirl, this is not much but I managed to make this for your birthday, I really miss you I wish we were celebrating your 20th birthday together in a way in my heart we are spending it together, we're sitting in park with the cats and theo and spending your birthday as a pic-nic together. I really wish we were together today. I really miss you baby, I (we) love you so much.</p>
+            <p>Your Ruby Rue <333 and your silly Son <33</p>
+            <button class="button" id="startButton">Open your birthday booster pack</button>
+        </div>
+
+        <div id="image-container" class="image-container">
+            <img id="image" src="" alt="Birthday Image">
+            <div>
+                <button class="button" id="previousButton">Show Previous card</button>
+                <button class="button" id="nextButton">Next Card</button>
+            </div>
+            <div class="confetti" id="confetti">🎉🎉🎉</div>
+            <a id="downloadLink" class="download-btn" href="" download="birthday-image.jpg">
+                <button class="button">Download Image</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "https://i.imgur.com/8Vkou1X.jpeg", 
+            "https://i.imgur.com/f9gPIMc.jpeg", 
+            "https://i.imgur.com/vd4IEZS.jpeg", 
+            "https://i.imgur.com/yY5UQAl.jpeg", 
+            "https://i.imgur.com/DP4akaO.jpeg", 
+            "https://i.imgur.com/2BbWQRm.jpeg", 
+            "https://imgs.search.brave.com/holFa-jn-9gGD9cZ8VUp99HlJnBT2LYYeuIAWyx_KuA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG9rZW1vbndpemFy/ZC5jb20vdXBsb2Fk/cy9pbWFnZXMvY2Fy/ZHMvMTg2MS8yMDY4/MjUtcHN5ZHVjay1z/bTE5OS1kZXRlY3Rp/dmUtcGlrYWNodS1z/dGFtcGVkLmpwZw", 
+            "https://i.imgur.com/yAvHufY.jpeg", 
+            "https://i.imgur.com/eKyeqGk.jpeg",
+            "https://i.imgur.com/6hTLVQE.jpeg"
+        ];
+
+        let currentImageIndex = 0;
+
+        document.getElementById("startButton").onclick = function() {
+            document.getElementById("intro").style.display = "none";
+            document.getElementById("image-container").style.display = "block";
+            showImage(currentImageIndex);
+        };
+
+        document.getElementById("nextButton").onclick = function() {
+            if (currentImageIndex < images.length - 1) {
+                currentImageIndex++;
+                showImage(currentImageIndex);
+            } else {
+                showConfettiAndDownload();
+            }
+        };
+
+        document.getElementById("previousButton").onclick = function() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                showImage(currentImageIndex);
+            }
+        };
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowRight") {
+                document.getElementById("nextButton").click();
+            }
+            if (event.key === "ArrowLeft") {
+                document.getElementById("previousButton").click();
+            }
+        });
+
+        function showImage(index) {
+            document.getElementById("image").src = images[index];
+            document.getElementById("downloadLink").style.display = "none";
+            document.getElementById("nextButton").style.display = "inline-block";
+            document.getElementById("previousButton").style.display = "inline-block";
+        }
+
+        function showConfettiAndDownload() {
+            document.getElementById("confetti").style.display = "inline";
+            document.getElementById("nextButton").style.display = "none";
+            document.getElementById("previousButton").style.display = "none";
+            document.getElementById("downloadLink").style.display = "inline-block";
+            document.getElementById("downloadLink").href = images[images.length - 1];
+        }
+    </script>
+
+</body>
+</html>
