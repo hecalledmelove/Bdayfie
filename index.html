@@ -80,7 +80,7 @@
         <!-- Final Page -->
         <div id="final-page" class="final-page">
             <p>Here's the final surprise! I hope you had fun with the booster pack. Now, I want to leave you with a special message:</p>
-            <p>Happy 20th Birthday, my dear! 🎉🎂 You mean the world to me, and I’m so grateful for every moment we share. I can’t wait for the many more birthdays to come!</p>
+            <p>Happy 20th Birthday, my Alfie, i hope you liked this small gift from me and probably birda, we both miss you a lot loser but at least we will see each other in February!</p>
         </div>
     </div>
 
@@ -131,5 +131,27 @@
             }
         });
 
-        function showImage(in
+        function showImage(index) {
+            document.getElementById("image").src = images[index];
+            document.getElementById("downloadLink").style.display = "none";
+            document.getElementById("nextButton").style.display = "inline-block";
+            document.getElementById("previousButton").style.display = "inline-block";
+        }
 
+        function showConfettiAndDownload() {
+            document.getElementById("confetti").style.display = "inline";
+            document.getElementById("nextButton").style.display = "none";
+            document.getElementById("previousButton").style.display = "none";
+            document.getElementById("downloadLink").style.display = "inline-block";
+            document.getElementById("downloadLink").href = images[images.length - 1];
+
+            // Show the final page with a text
+            setTimeout(function() {
+                document.getElementById("image-container").style.display = "none";
+                document.getElementById("final-page").style.display = "block";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
