@@ -49,6 +49,11 @@
             height: 500px; /* Fixed height */
             object-fit: cover;
         }
+        .final-page {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -70,6 +75,12 @@
             <a id="downloadLink" class="download-btn" href="" download="birthday-image.jpg">
                 <button class="button">Download Image</button>
             </a>
+        </div>
+
+        <!-- Final Page -->
+        <div id="final-page" class="final-page">
+            <p>Here's the final surprise! I hope you had fun with the booster pack. Now, I want to leave you with a special message:</p>
+            <p>Happy 20th Birthday, my dear! 🎉🎂 You mean the world to me, and I’m so grateful for every moment we share. I can’t wait for the many more birthdays to come!</p>
         </div>
     </div>
 
@@ -120,21 +131,5 @@
             }
         });
 
-        function showImage(index) {
-            document.getElementById("image").src = images[index];
-            document.getElementById("downloadLink").style.display = "none";
-            document.getElementById("nextButton").style.display = "inline-block";
-            document.getElementById("previousButton").style.display = "inline-block";
-        }
+        function showImage(in
 
-        function showConfettiAndDownload() {
-            document.getElementById("confetti").style.display = "inline";
-            document.getElementById("nextButton").style.display = "none";
-            document.getElementById("previousButton").style.display = "none";
-            document.getElementById("downloadLink").style.display = "inline-block";
-            document.getElementById("downloadLink").href = images[images.length - 1];
-        }
-    </script>
-
-</body>
-</html>
